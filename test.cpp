@@ -24,12 +24,12 @@ void test_io() {
 	e._expression -> print();
 	printf("Differentiated Tree:\t");
 	fflush(stdout);
-	BinaryTree * ret = e.differentiate('x');
-	ret -> print();
-	printf("Simplified Tree:\t");
-	fflush(stdout);
-	ret = e.simplify();
-	ret -> print();
+//	BinaryTree * ret = e.differentiate('x');
+//	ret -> print();
+//	printf("Simplified Tree:\t");
+//	fflush(stdout);
+//	ret = e.simplify();
+//	ret -> print();
 }
 
 void test1(){
@@ -72,11 +72,11 @@ void test3(){
 	std::vector<Token> v = s.infixToPostfix();
 	printf("\nDifferentiated Tree Output:\n");
 	ExpressionApplication e(v);
-	BinaryTree * ret = e.differentiate('x'); // differentiate wrt x
-	ret -> print();
-	fflush(stdout);
-	printf("\nExpected Output:\n");
-	printf("((((3*(x^2))+(2*(0^1)))+((1*y)+(x*0)))+0)\n");
+//	BinaryTree * ret = e.differentiate('x'); // differentiate wrt x
+//	ret -> print();
+//	fflush(stdout);
+//	printf("\nExpected Output:\n");
+//	printf("((((3*(x^2))+(2*(0^1)))+((1*y)+(x*0)))+0)\n");
 }
 
 void test4(){

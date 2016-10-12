@@ -15,6 +15,7 @@ ExpressionApplication::ExpressionApplication(vector<Token> &v) {
 
 ExpressionApplication::~ExpressionApplication() {
 	//TODO 2
+	delete _expression;
 }
 
 

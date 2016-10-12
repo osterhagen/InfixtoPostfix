@@ -13,7 +13,7 @@ public:
 	
 	ExpressionApplication(vector<Token> &v);
 	~ExpressionApplication();
-	TreeNode * differentiate(bool isPowerOp, char target)
+	TreeNode * differentiate(bool isPowerOp, char target);
 	BinaryTree * simplify();
 	BinaryTree * buildExpressionTree(vector<Token> &v);
 };
