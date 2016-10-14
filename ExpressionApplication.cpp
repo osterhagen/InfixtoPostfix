@@ -13,7 +13,44 @@ ExpressionApplication::buildExpressionTree(vector<Token> &v) {
 
 ExpressionApplication::ExpressionApplication(vector<Token> &v) {
 	//TODO 2
-    stack<Token> temp;
+    const int size = v.size() - 1;
+    _expression = new BinaryTree();
+    _expression -> _root = new TreeNode(v[size]);
+    TreeNode * current = _expression -> _root;
+    for (int i = v.size() - 1; i >= 0; i--) {
+        if (current->_right == NULL) {
+            current->_right = new TreeNode(v[size - i]);
+            current->_right->_parent = current;
+            current = current->_right;
+        } else {
+            current->_left = new TreeNode(v[size - i]);
+            current->_left->_parent = current;
+            current = current->_left;
+        }
+    }
+}
+
+ExpressionApplication::~ExpressionApplication() {
+	//TODO 2
+
+}
+
+TreeNode * ExpressionApplication::differentiate(bool isPowerOp, char target) {
+	//TODO 5
+}
+
+BinaryTree * ExpressionApplication::differentiate(char target) {
+	//TODO 5
+}
+
+BinaryTree *
+ExpressionApplication::simplify() {
+	//TODO 4
+}
+
+
+/*
+ * stack<Token> temp;
     int i = 0;
     int j = 0;
     _expression = new BinaryTree();
@@ -55,24 +92,5 @@ ExpressionApplication::ExpressionApplication(vector<Token> &v) {
         j++;
     }
 
-}
-
-ExpressionApplication::~ExpressionApplication() {
-	//TODO 2
-
-}
-
-TreeNode * ExpressionApplication::differentiate(bool isPowerOp, char target) {
-	//TODO 5
-}
-
-BinaryTree * ExpressionApplication::differentiate(char target) {
-	//TODO 5
-}
-
-BinaryTree *
-ExpressionApplication::simplify() {
-	//TODO 4
-}
-
+ */
 
