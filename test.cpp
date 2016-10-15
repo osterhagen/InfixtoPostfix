@@ -2,6 +2,12 @@
 #include "ShuntingYard.h"
 #include <stdio.h>
 #include <string.h>
+/*
+Please uncomment the test cases - test_io and test3
+based on the type of differentiate you have implemented in your code.
+Your code will be graded against anyone of the types of differentiate.
+*/
+
 
 void test_io() {
 	char buf[1000];
@@ -24,13 +30,44 @@ void test_io() {
 	e._expression -> print();
 	printf("Differentiated Tree:\t");
 	fflush(stdout);
-//	BinaryTree * ret = e.differentiate('x');
-//	ret -> print();
-//	printf("Simplified Tree:\t");
-//	fflush(stdout);
-//	ret = e.simplify();
-//	ret -> print();
+	TreeNode * ret = e.differentiate(false,'x');
+	printTree(ret);
+	printf("Simplified Tree:\t");
+	fflush(stdout);
+	BinaryTree * simpl = e.simplify();
+	simpl -> print();
 }
+
+/*
+void test_io() {
+	char buf[1000];
+	char * p = buf;
+	int c;
+	while((c = getchar()) != EOF) {
+		*p++ = c;
+	}
+	*p = 0;
+	Shuntingyard s(buf);
+	std::vector<Token> v = s.infixToPostfix();
+	printf("Shunting Yard Output:\n");
+	for (int j=0;j<v.size();j++){
+		v[j].print();
+	}
+	fflush(stdout);
+	ExpressionApplication e(v);
+	printf("\nOriginal Tree:\t\t");
+	fflush(stdout);
+	e._expression -> print();
+	printf("Differentiated Tree:\t");
+	fflush(stdout);
+	BinaryTree * ret = e.differentiate('x');
+	ret -> print();
+	printf("Simplified Tree:\t");
+	fflush(stdout);
+	ret = e.simplify();
+	ret -> print();
+}
+*/
 
 void test1(){
 	/*
@@ -64,31 +101,48 @@ void test2(){
 }
 
 void test3(){
-	/*
-	Test for Differentiation Without Simplification 
-	*/
+	//Test for Differentiation Without Simplification 
+	
 	char buf[] = "x^3+y^2+x*y+5";
 	Shuntingyard s(buf);
 	std::vector<Token> v = s.infixToPostfix();
 	printf("\nDifferentiated Tree Output:\n");
 	ExpressionApplication e(v);
-//	BinaryTree * ret = e.differentiate('x'); // differentiate wrt x
-//	ret -> print();
-//	fflush(stdout);
-//	printf("\nExpected Output:\n");
-//	printf("((((3*(x^2))+(2*(0^1)))+((1*y)+(x*0)))+0)\n");
+	BinaryTree * ret = e.differentiate('x'); // differentiate wrt x
+	ret -> print();
+	fflush(stdout);
+	printf("\nExpected Output:\n");
+	printf("((((3*(x^2))+(2*(0^1)))+((1*y)+(x*0)))+0)\n");
 }
+
+/*
+void test3(){
+	//Test for Differentiation Without Simplification 
+	char buf[] = "x^3+y^2+x*y+5";
+	Shuntingyard s(buf);
+	std::vector<Token> v = s.infixToPostfix();
+	printf("\nDifferentiated Tree Output:\n");
+	ExpressionApplication e(v);	
+	TreeNode * ret = e.differentiate(false,'x');
+	printTree(ret);
+	fflush(stdout);
+	printf("\nExpected Output:\n");
+	printf("((((3*(x^2))+(2*(0^1)))+((1*y)+(x*0)))+0)\n");
+}
+*/
 
 void test4(){
 	/*
 	Test for Differentiation With Simplification 
+	Note - Simplify operation performs a differentiation on the Binary Tree wrt to 'x' (you can hardcode this).
+	And then simplify the tree.
 	*/
 	char buf[] = "x^3+y^2+x*y+5";
 	Shuntingyard s(buf);
 	std::vector<Token> v = s.infixToPostfix();
 	printf("\nDifferentiated Tree Output:\n");
 	ExpressionApplication e(v);
-	BinaryTree * ret = e.simplify(); // Assume for simplify() - first differentiate wrt x then simplify
+	BinaryTree * ret = e.simplify();
 	ret -> print();
 	fflush(stdout);
 	printf("\nExpected Output:\n");
