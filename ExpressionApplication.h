@@ -14,14 +14,6 @@ public:
 	ExpressionApplication(vector<Token> &v);
 	~ExpressionApplication();
 	TreeNode * differentiate(bool isPowerOp, char target);
-	BinaryTree * differentiate(char target);
 	BinaryTree * simplify();
 	BinaryTree * buildExpressionTree(vector<Token> &v);
-    void del(TreeNode *root) {
-        if (root != NULL) {
-            del(root->_left);
-            del(root->_right);
-            delete root;
-        }
-    }
 };

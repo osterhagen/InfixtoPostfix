@@ -17,18 +17,12 @@ public:
 	
 	~TreeNode() { }
 };
-void printTree(TreeNode * root);
+
+
 class BinaryTree {
 public:
 	BinaryTree();
 	~BinaryTree();
 	TreeNode * _root;
 	void print();
-    void del(TreeNode *root) {
-        if (root != NULL) {
-            del(root->_left);
-            del(root->_right);
-            delete root;
-        }
-    }
 };

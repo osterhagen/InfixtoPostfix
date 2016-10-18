@@ -6,7 +6,9 @@ BinaryTree::BinaryTree() {
 
 
 BinaryTree::~BinaryTree() {
-    del(_root);
+	//TODO 2
+	delete _root;
+
 }
 
 void printTree(TreeNode * root) {
